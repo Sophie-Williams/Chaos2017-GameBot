@@ -1,8 +1,8 @@
+#include <Robot.h>
 #include <cstdint>
 #include "WPILib.h"
-#include "DevBot.h"
 
-DevBot::DevBot():
+Robot::Robot():
 	// Actual Motor Controllers
 	frontLeft(7),
 	middleLeft(8),
@@ -32,7 +32,7 @@ DevBot::DevBot():
 }
 
 // TODO: Check if WPILib is fixed yet.
-void DevBot::UpdateMotors() {
+void Robot::UpdateMotors() {
 	// Set real motor values based off of the fake ones
 	frontLeft.Set(PWMl.Get());
 	middleLeft.Set(PWMl.Get());
@@ -43,4 +43,4 @@ void DevBot::UpdateMotors() {
 	rearRight.Set(PWMr.Get());
 }
 
-START_ROBOT_CLASS(DevBot);
+START_ROBOT_CLASS(Robot);

@@ -1,12 +1,12 @@
-#ifndef SRC_DEVBOT_H_
-#define SRC_DEVBOT_H_
+#ifndef SRC_ROBOT_H_
+#define SRC_ROBOT_H_
 
 #include <cstdint>
 #include "WPILib.h"
 #include "CANTalon.h"
 
 // Main Robot Class
-class DevBot: public IterativeRobot
+class Robot: public IterativeRobot
 {
   private:
 	// Actual Motor Controllers
@@ -35,7 +35,7 @@ class DevBot: public IterativeRobot
 
   public:
 	// Constructor Method
-	DevBot();
+	Robot();
 
 	// Various Iterators
 	void AutonomousInit();
@@ -51,4 +51,4 @@ class DevBot: public IterativeRobot
 	int AutoSwitch();
 };
 
-#endif /* SRC_DEVBOT_H_ */
+#endif /* SRC_ROBOT_H_ */

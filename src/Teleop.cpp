@@ -1,13 +1,13 @@
+#include <Robot.h>
 #include <cstdint>
 #include "WPILib.h"
-#include "DevBot.h"
 #include <iostream>
 
-void DevBot::TeleopInit() {
+void Robot::TeleopInit() {
 	robotDrive.SetSafetyEnabled(false);	// Necessary for proper motor functioning during Teleop
 }
 
-void DevBot::TeleopPeriodic() {
+void Robot::TeleopPeriodic() {
 
 	// Drive
 	robotDrive.ArcadeDrive (

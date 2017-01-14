@@ -1,18 +1,18 @@
+#include <Robot.h>
 #include <cstdint>
 #include <cmath>
 #include "WPILib.h"
-#include "DevBot.h"
 
-void DevBot::AutonomousInit() {
+void Robot::AutonomousInit() {
 	// Setup
 	robotDrive.SetSafetyEnabled(false);
 }
 
-void DevBot::AutonomousPeriodic() {
+void Robot::AutonomousPeriodic() {
 	Wait(0.005);
 }
 
-void DevBot::Turn( float absSpeed, float targetAngle ) {
+void Robot::Turn( float absSpeed, float targetAngle ) {
 	float angle;
 	float offset;
 	float speed;
@@ -50,7 +50,7 @@ void DevBot::Turn( float absSpeed, float targetAngle ) {
 	UpdateMotors();
 }
 
-void DevBot::Backward( float Speed, float Time ) {
+void Robot::Backward( float Speed, float Time ) {
 	// Reset the gyro to 0 degrees
 	gyro.Reset();
 
@@ -72,7 +72,7 @@ void DevBot::Backward( float Speed, float Time ) {
 	timer.Stop();
 }
 
-void DevBot::Forward( float Speed, float Time ) {
+void Robot::Forward( float Speed, float Time ) {
 	// Reset the gyro to 0 degrees
 	gyro.Reset();
 
