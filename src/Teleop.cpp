@@ -11,9 +11,9 @@ void Robot::TeleopPeriodic() {
 
 	// Drive
 	robotDrive.MecanumDrive_Cartesian (
-		driver.GetY(GenericHID::KLeftHand), // Forward movement
-		driver.GetX(GenericHID::KLeftHand), // Sideways movement
-		driver.GetX(GenericHID::KRightHand) // Rotational movement
+		driver.GetY(GenericHID::kLeftHand), // Forward movement
+		driver.GetX(GenericHID::kLeftHand), // Sideways movement
+		driver.GetX(GenericHID::kRightHand) // Rotational movement
 	);
 
 	UpdateMotors();
