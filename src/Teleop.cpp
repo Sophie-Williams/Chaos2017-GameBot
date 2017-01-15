@@ -10,9 +10,10 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 
 	// Drive
-	robotDrive.ArcadeDrive (
-		-driver.GetRawAxis(1),		// Forward movement
-		-driver.GetRawAxis(4)		// Rotational movement
+	robotDrive.MecanumDrive_Cartesian (
+		driver.GetY(GenericHID::KLeftHand), // Forward movement
+		driver.GetX(GenericHID::KLeftHand), // Sideways movement
+		driver.GetX(GenericHID::KRightHand) // Rotational movement
 	);
 
 	UpdateMotors();

@@ -10,22 +10,21 @@ class Robot: public IterativeRobot
 {
   private:
 	// Actual Motor Controllers
-	CANTalon frontLeft;
-	CANTalon middleLeft;
-	CANTalon rearLeft;
-
 	CANTalon frontRight;
-	CANTalon middleRight;
+	CANTalon frontLeft;
+	CANTalon rearLeft;
 	CANTalon rearRight;
 
 	// Fake Motor Controllers
 	// TODO: Check if WPILib is fixed yet.
-	TalonSRX PWMl;
-	TalonSRX PWMr;
+	TalonSRX PWMfr;
+	TalonSRX PWMfl;
+	TalonSRX PWMrl;
+	TalonSRX PWMrr;
 
 	// Controllers
-	Joystick driver;
-	Joystick copilot;
+	XboxController driver;
+	XboxController copilot;
 
 	// Assorted In's and Out's
 	AnalogGyro gyro;

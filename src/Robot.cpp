@@ -4,17 +4,16 @@
 
 Robot::Robot():
 	// Actual Motor Controllers
-	frontLeft(7),
-	middleLeft(8),
-	rearLeft(9),
-
-	frontRight(10),
-	middleRight(11),
-	rearRight(12),
+	frontRight(1),
+	frontLeft(2),
+	rearLeft(3),
+	rearRight(4),
 
 	// Fake Motor Controllers
-	PWMl(0),
-	PWMr(1),
+	PWMfr(0),
+	PWMfl(1),
+	PWMrl(2),
+	PWMrr(3),
 	
 	// Controllers
 	driver(5),
@@ -24,7 +23,7 @@ Robot::Robot():
 	gyro(0),
 	accelerometer(),
 	compressor(),
-	robotDrive(PWMl, PWMr)
+	robotDrive(PWMfl, PWMrl, PWMfr, PWMrr)
 
 {
 	robotDrive.SetExpiration(0.3);
@@ -34,13 +33,11 @@ Robot::Robot():
 // TODO: Check if WPILib is fixed yet.
 void Robot::UpdateMotors() {
 	// Set real motor values based off of the fake ones
-	frontLeft.Set(PWMl.Get());
-	middleLeft.Set(PWMl.Get());
-	rearLeft.Set(PWMl.Get());
+	frontLeft.Set(PWMfl.Get());
+	rearLeft.Set(PWMrl.Get());
 	
-	frontRight.Set(PWMr.Get());
-	middleRight.Set(PWMr.Get());
-	rearRight.Set(PWMr.Get());
+	frontRight.Set(PWMfr.Get());
+	rearRight.Set(PWMrr.Get());
 }
 
 START_ROBOT_CLASS(Robot);
