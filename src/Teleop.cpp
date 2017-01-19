@@ -32,6 +32,8 @@ void Robot::TeleopPeriodic() {
 	double JoystickArray[] = { driver.GetY(GenericHID::kLeftHand), driver.GetX(
 			GenericHID::kLeftHand), driver.GetX(GenericHID::kRightHand) };
 
+	Deadband(JoystickArray);
+
 // Drive
 	robotDrive.MecanumDrive_Cartesian(
 			JoystickArray[0], // Forward movement
