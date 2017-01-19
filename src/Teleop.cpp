@@ -8,12 +8,13 @@ void Robot::TeleopInit() {
 }
 
 void Robot::TeleopPeriodic() {
+	double deadband = 0.5;
 
 	// Drive
 	robotDrive.MecanumDrive_Cartesian (
-		driver.GetY(GenericHID::kLeftHand), // Forward movement
-		driver.GetX(GenericHID::kLeftHand), // Sideways movement
-		driver.GetX(GenericHID::kRightHand) // Rotational movement
+		driver.GetY(GenericHID::kLeftHand, deadband), // Forward movement
+		driver.GetX(GenericHID::kLeftHand, deadband), // Sideways movement
+		driver.GetX(GenericHID::kRightHand, deadband) // Rotational movement
 	);
 
 	UpdateMotors();

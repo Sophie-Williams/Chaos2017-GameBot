@@ -4,6 +4,7 @@
 #include <cstdint>
 #include "WPILib.h"
 #include "CANTalon.h"
+#include "DeadbandXboxController.h"
 
 // Main Robot Class
 class Robot: public IterativeRobot
@@ -23,8 +24,8 @@ class Robot: public IterativeRobot
 	TalonSRX PWMrr;
 
 	// Controllers
-	XboxController driver;
-	XboxController copilot;
+	DeadbandXboxController driver;
+	DeadbandXboxController copilot;
 
 	// Assorted In's and Out's
 	AnalogGyro gyro;
