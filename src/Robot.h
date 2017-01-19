@@ -5,6 +5,8 @@
 #include "WPILib.h"
 #include "CANTalon.h"
 
+
+
 // Main Robot Class
 class Robot: public IterativeRobot
 {
@@ -42,6 +44,8 @@ class Robot: public IterativeRobot
 	void TeleopInit();
 	void TeleopPeriodic();
 	
+
+
 	// Various Helper Functions
 	void UpdateMotors();
 	void Forward( float Speed, float Time );
