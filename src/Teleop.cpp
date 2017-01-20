@@ -9,15 +9,15 @@ void Deadband(double (&Joystick)[3]) {
 
 	float deadband = 0.5;
 
-	if (abs(Joystick[0]) <= deadband) {
+	if (fabs(Joystick[0]) <= deadband) {
 		Joystick[0] = 0;
 	}
 
-	if (abs(Joystick[1]) <= deadband) {
+	if (fabs(Joystick[1]) <= deadband) {
 		Joystick[1] = 0;
 	}
 
-	if (abs(Joystick[2]) <= deadband) {
+	if (fabs(Joystick[2]) <= deadband) {
 		Joystick[2] = 0;
 	}
 
