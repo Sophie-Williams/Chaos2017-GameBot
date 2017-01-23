@@ -4,10 +4,10 @@
 
 Robot::Robot():
 	// Actual Motor Controllers
-	frontRight(1),
-	frontLeft(2),
-	rearLeft(3),
-	rearRight(4),
+	frontRight(19),
+	frontLeft(20),
+	rearLeft(17),
+	rearRight(18),
 
 	// Fake Motor Controllers
 	PWMfr(0),
@@ -36,7 +36,7 @@ void Robot::UpdateMotors() {
 	frontLeft.Set(-PWMfl.Get());
 	rearLeft.Set(PWMrl.Get());
 	
-	frontRight.Set(-PWMfr.Get());
+	frontRight.Set(PWMfr.Get());
 	rearRight.Set(PWMrr.Get());
 }
 
