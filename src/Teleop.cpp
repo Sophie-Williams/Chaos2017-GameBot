@@ -7,17 +7,17 @@
 
 void Deadband(double (&Joystick)[3]) {
 
-	float deadband = 0.5;
+	float deadband = 0.2;
 
-	if (abs(Joystick[0]) <= deadband) {
+	if (fabs(Joystick[0]) <= deadband) {
 		Joystick[0] = 0;
 	}
 
-	if (abs(Joystick[1]) <= deadband) {
+	if (fabs(Joystick[1]) <= deadband) {
 		Joystick[1] = 0;
 	}
 
-	if (abs(Joystick[2]) <= deadband) {
+	if (fabs(Joystick[2]) <= deadband) {
 		Joystick[2] = 0;
 	}
 
@@ -36,9 +36,9 @@ void Robot::TeleopPeriodic() {
 
 // Drive
 	robotDrive.MecanumDrive_Cartesian(
-			JoystickArray[0], // Forward movement
-			JoystickArray[1], // Sideways movement
-			JoystickArray[2] // Rotational movement
+			0.5*JoystickArray[0], // Forward movement
+			0.5*JoystickArray[1], // Sideways movement
+			0.5*JoystickArray[2]// Rotational movement
 			);
 
 	UpdateMotors();
