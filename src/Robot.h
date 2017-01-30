@@ -4,7 +4,8 @@
 #include <cstdint>
 #include "WPILib.h"
 #include "CANTalon.h"
-
+#include "Climber.h"
+#include "PowerDistributionPanel.h"
 
 
 // Main Robot Class
@@ -28,12 +29,18 @@ class Robot: public IterativeRobot
 	XboxController driver;
 	XboxController copilot;
 
+	// Pseudo-subsystem
+	Climber climber;
+	PowerDistributionPanel pdu;
+
 	// Assorted In's and Out's
 	AnalogGyro gyro;
 	BuiltInAccelerometer accelerometer;
 	Compressor compressor;
 	RobotDrive robotDrive;
 
+	// Flag variables
+	bool climbing;
   public:
 	// Constructor Method
 	Robot();

@@ -1,13 +1,14 @@
 #include <Robot.h>
 #include <cstdint>
 #include "WPILib.h"
+#include "Climber.h"
 
 Robot::Robot():
 	// Actual Motor Controllers
-	frontRight(19),
-	frontLeft(20),
-	rearLeft(17),
-	rearRight(18),
+	frontRight(15),
+	frontLeft(13),
+	rearLeft(20),
+	rearRight(17),
 
 	// Fake Motor Controllers
 	PWMfr(0),
@@ -19,12 +20,18 @@ Robot::Robot():
 	driver(5),
 	copilot(4),
 
+	// Subsystems
+	climber(16),
+	pdu(0),
+
 	// Assorted In's and Out's
 	gyro(0),
 	accelerometer(),
 	compressor(),
-	robotDrive(PWMfl, PWMrl, PWMfr, PWMrr)
+	robotDrive(PWMfl, PWMrl, PWMfr, PWMrr),
 
+	// Flag variables
+	climbing(false)
 {
 	robotDrive.SetExpiration(0.3);
 	compressor.Start();
@@ -36,7 +43,7 @@ void Robot::UpdateMotors() {
 	frontLeft.Set(-PWMfl.Get());
 	rearLeft.Set(PWMrl.Get());
 	
-	frontRight.Set(PWMfr.Get());
+	frontRight.Set(-PWMfr.Get());
 	rearRight.Set(PWMrr.Get());
 }
 

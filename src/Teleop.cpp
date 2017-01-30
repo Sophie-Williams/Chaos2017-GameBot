@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include <iostream>
+#include "Climber.h"
 
 void Deadband(double (&Joystick)[3]) {
 
@@ -35,12 +36,39 @@ void Robot::TeleopPeriodic() {
 	Deadband(JoystickArray);
 
 // Drive
-	robotDrive.MecanumDrive_Cartesian(
-			0.5*JoystickArray[0], // Forward movement
-			0.5*JoystickArray[1], // Sideways movement
-			0.5*JoystickArray[2]// Rotational movement
+	robotDrive.MecanumDrive_Cartesian(0.5 * JoystickArray[0], // Forward movement
+	0.5 * JoystickArray[1], // Sideways movement
+	0.5 * JoystickArray[2] // Rotational movement
 			);
 
+	if (climbing) {
+
+		if (driver.GetBButton()) {
+
+			climbing = false;
+		}
+
+		else if (pdu.GetCurrent(12) >= 30.0) {
+
+			climber.Set(0.1);
+		}
+
+		else {
+			climber.Set(1.0);
+		}
+	} else {
+
+		if (driver.GetAButton()) {
+
+			climbing = true;
+		} else if (driver.GetBButton()) {
+
+			climber.Set(-1);
+		} else {
+
+			climber.Set(0);
+		}
+	}
 	UpdateMotors();
 
 	Wait(0.005);
