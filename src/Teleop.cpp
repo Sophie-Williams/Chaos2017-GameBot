@@ -36,10 +36,11 @@ void Robot::TeleopPeriodic() {
 	Deadband(JoystickArray);
 
 // Drive
-	robotDrive.MecanumDrive_Cartesian(0.5 * JoystickArray[0], // Forward movement
-	0.5 * JoystickArray[1], // Sideways movement
-	0.5 * JoystickArray[2] // Rotational movement
-			);
+	robotDrive.MecanumDrive_Cartesian(
+		-0.5 * JoystickArray[0], // Forward movement
+		0.5 * JoystickArray[1], // Sideways movement
+		0.5 * JoystickArray[2] // Rotational movement
+	);
 
 	if (climbing) {
 

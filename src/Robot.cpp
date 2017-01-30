@@ -2,13 +2,14 @@
 #include <cstdint>
 #include "WPILib.h"
 #include "Climber.h"
+#include "Config.h"
 
 Robot::Robot():
 	// Actual Motor Controllers
-	frontRight(15),
-	frontLeft(13),
-	rearLeft(20),
-	rearRight(17),
+	frontRight(FRONT_RIGHT_CANTALON_ID),
+	frontLeft(FRONT_LEFT_CANTALON_ID),
+	rearLeft(REAR_LEFT_CANTALON_ID),
+	rearRight(REAR_RIGHT_CANTALON_ID),
 
 	// Fake Motor Controllers
 	PWMfr(0),
@@ -21,7 +22,7 @@ Robot::Robot():
 	copilot(4),
 
 	// Subsystems
-	climber(16),
+	climber(CLIMBER_CANTALON_ID),
 	pdu(0),
 
 	// Assorted In's and Out's
