@@ -24,12 +24,15 @@ Robot::Robot():
 	// Subsystems
 	climber(CLIMBER_CANTALON_ID),
 	pdu(0),
+	shooter(SHOOTER_LEFT_CANTALON_ID, SHOOTER_RIGHT_CANTALON_ID),
+	roller(ROLLER_CANTALON_ID),
 
 	// Assorted In's and Out's
 	gyro(0),
 	accelerometer(),
 	compressor(),
 	robotDrive(PWMfl, PWMrl, PWMfr, PWMrr),
+
 
 	// Flag variables
 	climbing(false)

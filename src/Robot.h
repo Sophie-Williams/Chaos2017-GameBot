@@ -6,7 +6,8 @@
 #include "CANTalon.h"
 #include "Climber.h"
 #include "PowerDistributionPanel.h"
-
+#include "Shooter.h"
+#include "Roller.h"
 
 // Main Robot Class
 class Robot: public IterativeRobot
@@ -32,6 +33,8 @@ class Robot: public IterativeRobot
 	// Pseudo-subsystem
 	Climber climber;
 	PowerDistributionPanel pdu;
+	Shooter shooter;
+	Roller roller;
 
 	// Assorted In's and Out's
 	AnalogGyro gyro;

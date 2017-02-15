@@ -5,6 +5,8 @@
 #include <cmath>
 #include <iostream>
 #include "Climber.h"
+#include "Shooter.h"
+#include "Roller.h"
 
 void Deadband(double (&Joystick)[3]) {
 
@@ -36,11 +38,10 @@ void Robot::TeleopPeriodic() {
 	Deadband(JoystickArray);
 
 // Drive
-	robotDrive.MecanumDrive_Cartesian(
-		-0.5 * JoystickArray[0], // Forward movement
-		0.5 * JoystickArray[1], // Sideways movement
-		0.5 * JoystickArray[2] // Rotational movement
-	);
+	robotDrive.MecanumDrive_Cartesian(-0.5 * JoystickArray[0], // Forward movement
+	0.5 * JoystickArray[1], // Sideways movement
+	0.5 * JoystickArray[2] // Rotational movement
+			);
 
 	if (climbing) {
 
@@ -69,6 +70,10 @@ void Robot::TeleopPeriodic() {
 
 			climber.Set(0);
 		}
+
+		shooter.Set(-0.1, 0.1);
+		roller.Set(0.1);
+
 	}
 	UpdateMotors();
 
