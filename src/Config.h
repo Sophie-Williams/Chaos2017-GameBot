@@ -14,10 +14,10 @@
 #define	FRONT_RIGHT_CANTALON_ID		16
 
 // Subsystems
-#define	CLIMBER_CANTALON_ID			16
+#define	CLIMBER_CANTALON_ID			17
 #define SHOOTER_LEFT_CANTALON_ID    19
 #define SHOOTER_RIGHT_CANTALON_ID   18
-#define ROLLER_CANTALON_ID          14
+#define ROLLER_CANTALON_ID          13
 
 #endif
 
@@ -31,7 +31,7 @@
 #define	FRONT_RIGHT_CANTALON_ID		12
 
 // Subsystems
-#define	CLIMBER_CANTALON_ID			8
+#define	CLIMBER_CANTALON_ID			5
 #define SHOOTER_LEFT_CANTALON_ID    7
 #define SHOOTER_RIGHT_CANTALON_ID   6
 #define ROLLER_CANTALON_ID          10
