@@ -43,6 +43,7 @@ class Robot: public IterativeRobot
 
 	// Flag variables
 	bool climbing;
+	bool rolling;
   public:
 	// Constructor Method
 	Robot();

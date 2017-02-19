@@ -8,5 +8,5 @@ Roller::Roller( int talon_id ):
 }
 
 void Roller::Set( float speed ) {
-	roller.Set( speed );
+	roller.Set( -speed );
 }

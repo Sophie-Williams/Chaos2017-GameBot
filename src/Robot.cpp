@@ -35,7 +35,8 @@ Robot::Robot():
 	robotDrive(PWMfr, PWMfl, PWMrr, PWMrl),
 
 	// Flag variables
-	climbing(false)
+	climbing(false),
+	rolling(false)
 {
 	robotDrive.SetExpiration(0.3);
 }

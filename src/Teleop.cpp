@@ -60,8 +60,25 @@ void Robot::TeleopPeriodic() {
 
 			climber.Set(0);
 		}
+	// Roller Control
+	if (rolling) {
+		if (driver.GetYButton()) {
+			rolling = false;
+		} else if (pdu.GetCurrent(15) >= 20.0) {
+			roller.Set(0.1);
+		} else {
+			roller.Set(1.0);
+		}
+	} else {
+		if (driver.GetXButton()) {
+			rolling = true;
+		} else if (driver.GetYButton()) {
+			roller.Set(-1);
+		} else {
+			roller.Set(0);
+		}
+	}
 
-		roller.Set(0.1);
 
 	// Shooter Control
 	if (copilot.GetYButton()) {
