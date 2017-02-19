@@ -18,6 +18,7 @@
 #define SHOOTER_LEFT_CANTALON_ID    19
 #define SHOOTER_RIGHT_CANTALON_ID   18
 #define ROLLER_CANTALON_ID          13
+#define GEAR_CANTALON_ID			4
 
 #endif
 
@@ -35,6 +36,7 @@
 #define SHOOTER_LEFT_CANTALON_ID    7
 #define SHOOTER_RIGHT_CANTALON_ID   6
 #define ROLLER_CANTALON_ID          10
+#define GEAR_CANTALON_ID			1
 
 #endif
 

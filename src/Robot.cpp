@@ -25,6 +25,7 @@ Robot::Robot():
 	climber(CLIMBER_CANTALON_ID),
 	shooter(SHOOTER_LEFT_CANTALON_ID, SHOOTER_RIGHT_CANTALON_ID, 4),
 	roller(ROLLER_CANTALON_ID),
+	gearHandler(GEAR_CANTALON_ID),
 
 	// Assorted In's and Out's
 	gyro(0),
@@ -36,7 +37,8 @@ Robot::Robot():
 
 	// Flag variables
 	climbing(false),
-	rolling(false)
+	rolling(false),
+	handling(false)
 {
 	robotDrive.SetExpiration(0.3);
 }

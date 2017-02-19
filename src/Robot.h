@@ -1,6 +1,7 @@
 #ifndef SRC_ROBOT_H_
 #define SRC_ROBOT_H_
 
+#include <GearHandler.h>
 #include <cstdint>
 #include "WPILib.h"
 #include "CANTalon.h"
@@ -34,6 +35,7 @@ class Robot: public IterativeRobot
 	Climber climber;
 	Shooter shooter;
 	Roller roller;
+	GearHandler gearHandler;
 
 	// Assorted In's and Out's
 	AnalogGyro gyro;
@@ -44,6 +46,8 @@ class Robot: public IterativeRobot
 	// Flag variables
 	bool climbing;
 	bool rolling;
+	bool handling;
+
   public:
 	// Constructor Method
 	Robot();
