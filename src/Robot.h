@@ -32,14 +32,13 @@ class Robot: public IterativeRobot
 
 	// Pseudo-subsystem
 	Climber climber;
-	PowerDistributionPanel pdu;
 	Shooter shooter;
 	Roller roller;
 
 	// Assorted In's and Out's
 	AnalogGyro gyro;
+	PowerDistributionPanel pdu;
 	BuiltInAccelerometer accelerometer;
-	Compressor compressor;
 	RobotDrive robotDrive;
 
 	// Flag variables

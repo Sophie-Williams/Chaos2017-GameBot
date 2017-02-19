@@ -23,14 +23,13 @@ Robot::Robot():
 
 	// Subsystems
 	climber(CLIMBER_CANTALON_ID),
-	pdu(0),
 	shooter(SHOOTER_LEFT_CANTALON_ID, SHOOTER_RIGHT_CANTALON_ID, 4),
 	roller(ROLLER_CANTALON_ID),
 
 	// Assorted In's and Out's
 	gyro(0),
+	pdu(0),
 	accelerometer(),
-	compressor(),
 
 	// NOTE: Documentation says (fl, rl, fr, rr), but it is actually (fr, fl, rr, rl)
 	robotDrive(PWMfr, PWMfl, PWMrr, PWMrl),
@@ -39,7 +38,6 @@ Robot::Robot():
 	climbing(false)
 {
 	robotDrive.SetExpiration(0.3);
-	compressor.Start();
 }
 
 // TODO: Check if WPILib is fixed yet.
