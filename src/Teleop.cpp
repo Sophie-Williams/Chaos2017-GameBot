@@ -8,20 +8,14 @@
 #include "Shooter.h"
 #include "Roller.h"
 
-void Deadband(double (&Joystick)[3]) {
+double deadband(double input) {
 
 	float deadband = 0.2;
 
-	if (fabs(Joystick[0]) <= deadband) {
-		Joystick[0] = 0;
-	}
-
-	if (fabs(Joystick[1]) <= deadband) {
-		Joystick[1] = 0;
-	}
-
-	if (fabs(Joystick[2]) <= deadband) {
-		Joystick[2] = 0;
+	if (fabs(input) <= deadband) {
+		return 0;
+	} else {
+		return input;
 	}
 
 }
@@ -32,16 +26,12 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 
-	double JoystickArray[] = { driver.GetY(GenericHID::kLeftHand), driver.GetX(
-			GenericHID::kLeftHand), driver.GetX(GenericHID::kRightHand) };
-
-	Deadband(JoystickArray);
-
-// Drive
-	robotDrive.MecanumDrive_Cartesian(-0.5 * JoystickArray[0], // Forward movement
-	0.5 * JoystickArray[1], // Sideways movement
-	-0.5 * JoystickArray[2] // Rotational movement
-			);
+	// Drive with deadband
+	robotDrive.MecanumDrive_Cartesian(
+		-0.5 * deadband(driver.GetY(GenericHID::kLeftHand)), // Forward movement
+		 0.5 * deadband(driver.GetX(GenericHID::kLeftHand)), // Sideways movement
+		-0.5 * deadband(driver.GetX(GenericHID::kRightHand))  // Rotational movement
+	);
 
 	if (climbing) {
 
