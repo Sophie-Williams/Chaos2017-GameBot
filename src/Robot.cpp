@@ -31,8 +31,9 @@ Robot::Robot():
 	gyro(0),
 	accelerometer(),
 	compressor(),
-	robotDrive(PWMfl, PWMrl, PWMfr, PWMrr),
 
+	// NOTE: Documentation says (fl, rl, fr, rr), but it is actually (fr, fl, rr, rl)
+	robotDrive(PWMfr, PWMfl, PWMrr, PWMrl),
 
 	// Flag variables
 	climbing(false)
