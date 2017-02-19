@@ -3,6 +3,7 @@
 
 #include "WPILib.h"
 #include "CANTalon.h"
+#include "Servo.h"
 
 class Shooter
 {
@@ -10,10 +11,18 @@ class Shooter
 	CANTalon shooterLeft;
 	CANTalon shooterRight;
 
-  public:
-	Shooter( int talon_id, int talon_id2);
+	Servo shooterServo;
 
-	void Set(float Speed, float speed);
+	bool shooting;
+
+  public:
+	Shooter( int talon_id, int talon_id2, int servo_id);
+
+	void SetSpeed(float speed);
+	void SetState(bool newState);
+	bool GetState();
+
+	void Teleop();
 };
 
 #endif /* SRC_SHOOTER_H_ */

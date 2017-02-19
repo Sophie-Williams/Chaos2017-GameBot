@@ -61,10 +61,18 @@ void Robot::TeleopPeriodic() {
 			climber.Set(0);
 		}
 
-		shooter.Set(-0.1, 0.1);
 		roller.Set(0.1);
 
+	// Shooter Control
+	if (copilot.GetYButton()) {
+		shooter.SetState(false);
+	} else if (copilot.GetXButton()) {
+		shooter.SetState(true);
 	}
+
+	// Update Shooter
+	shooter.Teleop();
+
 	UpdateMotors();
 
 	Wait(0.005);
