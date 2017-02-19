@@ -33,33 +33,25 @@ void Robot::TeleopPeriodic() {
 		-0.5 * deadband(driver.GetX(GenericHID::kRightHand))  // Rotational movement
 	);
 
+	// Climbing Control
 	if (climbing) {
-
 		if (driver.GetBButton()) {
-
 			climbing = false;
-		}
-
-		else if (pdu.GetCurrent(12) >= 30.0) {
-
+		} else if (pdu.GetCurrent(12) >= 30.0) {
 			climber.Set(0.1);
-		}
-
-		else {
+		} else {
 			climber.Set(1.0);
 		}
 	} else {
-
 		if (driver.GetAButton()) {
-
 			climbing = true;
 		} else if (driver.GetBButton()) {
-
 			climber.Set(-1);
 		} else {
-
 			climber.Set(0);
 		}
+	}
+
 	// Roller Control
 	if (rolling) {
 		if (driver.GetYButton()) {
