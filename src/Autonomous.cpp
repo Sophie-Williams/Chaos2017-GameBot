@@ -28,16 +28,16 @@ void Robot::Turn( float absSpeed, float targetAngle ) {
 	do {
 		// Find the offsets for the rest of the math
 		angle = gyro.GetAngle();
-		offset = angle - targetAngle;
-		
+		offset = targetAngle - angle;
+
 		// Calculate output speed
-		if(offset > 0)
-			speed = -absSpeed;
-		else
+		if(offset < 0)
 			speed = absSpeed;
+		else
+			speed = -absSpeed;
 
 		// Turn
-		robotDrive.ArcadeDrive(0.0, speed);
+		robotDrive.MecanumDrive_Cartesian(0, 0, speed);
 		UpdateMotors();
 
 		// Keep CPU from catching fire and network from exploding in a fireball of packets.
@@ -46,7 +46,7 @@ void Robot::Turn( float absSpeed, float targetAngle ) {
 	} while( abs(offset) > 1 && timer.Get() < 5 ); // Repeat until target is reached or we timeout.
 
 	// Leave everything as we found it
-	robotDrive.ArcadeDrive(0.0, 0.0);
+	robotDrive.MecanumDrive_Cartesian(0, 0, 0);
 	UpdateMotors();
 }
 
@@ -61,13 +61,13 @@ void Robot::Backward( float Speed, float Time ) {
 
 	// Move straight, changing angle to adjust for drift
 	while ( timer.Get() <= Time ) {
-		robotDrive.ArcadeDrive(-Speed, gyro.GetAngle() * 0.1 );
-		UpdateMotors();
 		Wait(0.005);
+		robotDrive.MecanumDrive_Cartesian(-Speed, 0, gyro.GetAngle() * 0.1 );
+		UpdateMotors();
 	}
 	
 	// Leave everything as we found it
-	robotDrive.ArcadeDrive(0.0, 0.0);
+	robotDrive.MecanumDrive_Cartesian(0, 0, 0);
 	UpdateMotors();
 	timer.Stop();
 }
@@ -83,13 +83,13 @@ void Robot::Forward( float Speed, float Time ) {
 
 	// Move straight, changing angle to adjust for drift
 	while ( timer.Get() <= Time ) {
-		robotDrive.ArcadeDrive(Speed, -gyro.GetAngle() * 0.1 );
-		UpdateMotors();
 		Wait(0.005);
+		robotDrive.MecanumDrive_Cartesian(Speed, 0, gyro.GetAngle() * 0.1 );
+		UpdateMotors();
 	}
 	
 	// Leave everything as we found it
-	robotDrive.ArcadeDrive(0.0, 0.0);
+	robotDrive.MecanumDrive_Cartesian(0, 0, 0);
 	UpdateMotors();
 	timer.Stop();
 }

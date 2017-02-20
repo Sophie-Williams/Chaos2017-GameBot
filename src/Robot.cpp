@@ -28,7 +28,7 @@ Robot::Robot():
 	gearHandler(GEAR_CANTALON_ID),
 
 	// Assorted In's and Out's
-	gyro(0),
+	gyro(),
 	pdu(0),
 	accelerometer(),
 

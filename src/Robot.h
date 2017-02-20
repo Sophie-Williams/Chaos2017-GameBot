@@ -4,6 +4,7 @@
 #include <GearHandler.h>
 #include <cstdint>
 #include "WPILib.h"
+#include "ADXRS450_Gyro.h"
 #include "CANTalon.h"
 #include "Climber.h"
 #include "PowerDistributionPanel.h"
@@ -38,7 +39,7 @@ class Robot: public IterativeRobot
 	GearHandler gearHandler;
 
 	// Assorted In's and Out's
-	AnalogGyro gyro;
+	ADXRS450_Gyro gyro;
 	PowerDistributionPanel pdu;
 	BuiltInAccelerometer accelerometer;
 	RobotDrive robotDrive;

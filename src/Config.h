@@ -2,7 +2,7 @@
 #define SRC_CONFIG_H_
 
 /* Define Robot ID (0: Main Robot, 1: Practice Robot) */
-#define	ROBOT_ID	0
+#define	ROBOT_ID	1
 
 /* Constants for Competition Robot */
 #if ROBOT_ID == 0
@@ -28,14 +28,14 @@
 // Drive Train
 #define	REAR_RIGHT_CANTALON_ID		11
 #define	REAR_LEFT_CANTALON_ID		8
-#define	FRONT_LEFT_CANTALON_ID		9
+#define	FRONT_LEFT_CANTALON_ID		10
 #define	FRONT_RIGHT_CANTALON_ID		12
 
 // Subsystems
 #define	CLIMBER_CANTALON_ID			5
 #define SHOOTER_LEFT_CANTALON_ID    7
 #define SHOOTER_RIGHT_CANTALON_ID   6
-#define ROLLER_CANTALON_ID          10
+#define ROLLER_CANTALON_ID          9
 #define GEAR_CANTALON_ID			1
 
 #endif
