@@ -82,6 +82,15 @@ void Robot::TeleopPeriodic() {
 	// Update Shooter
 	shooter.Teleop();
 
+	// Gear Handler Control
+	if (copilot.GetXButton()) {
+		gearHandler.Set(0.1);
+	} else if (copilot.GetYButton()) {
+		gearHandler.Set(-0.1);
+	} else {
+		gearHandler.Set(0);
+	}
+
 	UpdateMotors();
 
 	Wait(0.005);
