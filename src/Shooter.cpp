@@ -12,7 +12,7 @@ Shooter::Shooter( int talon_id, int talon_id2, int servo_id ):
 
 void Shooter::Teleop() {
 	// Set shooter speed
-	SetSpeed(0.45);
+	SetSpeed(0.55);
 
 	// Set servo according to state
 	if (shooting) {
@@ -23,8 +23,8 @@ void Shooter::Teleop() {
 }
 
 void Shooter::SetSpeed( float speed) {
-	shooterLeft.Set( speed );
-	shooterRight.Set( -speed );
+	shooterLeft.Set( -speed );
+	shooterRight.Set( speed );
 }
 
 void Shooter::SetState(bool newState) {
