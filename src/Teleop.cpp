@@ -7,6 +7,7 @@
 #include "Climber.h"
 #include "Shooter.h"
 #include "Roller.h"
+#include "Camera.h"
 
 double deadband(double input) {
 
@@ -37,7 +38,7 @@ void Robot::TeleopPeriodic() {
 	if (climbing) {
 		if (driver.GetBButton()) {
 			climbing = false;
-		} else if (pdu.GetCurrent(12) >= 30.0) {
+		} else if (pdu.GetCurrent(3) >= 30.0) {
 			climber.Set(0.1);
 		} else {
 			climber.Set(1.0);
@@ -54,7 +55,7 @@ void Robot::TeleopPeriodic() {
 
 	// Roller Control
 	if (rolling) {
-		if (driver.GetYButton()) {
+		if (copilot.GetYButton()) {
 			rolling = false;
 		} else if (pdu.GetCurrent(15) >= 20.0) {
 			roller.Set(0.1);
@@ -62,7 +63,7 @@ void Robot::TeleopPeriodic() {
 			roller.Set(1.0);
 		}
 	} else {
-		if (driver.GetXButton()) {
+		if (copilot.GetXButton()) {
 			rolling = true;
 		} else if (driver.GetYButton()) {
 			roller.Set(-1);
@@ -73,20 +74,30 @@ void Robot::TeleopPeriodic() {
 
 
 	// Shooter Control
-	if (copilot.GetYButton()) {
+	if (copilot.GetBButton()) {
 		shooter.SetState(false);
-	} else if (copilot.GetXButton()) {
+	} else if (copilot.GetAButton()) {
 		shooter.SetState(true);
 	}
 
 	// Update Shooter
 	shooter.Teleop();
 
-	// Gear Handler Control
-	if (copilot.GetXButton()) {
-		gearHandler.Set(0.1);
-	} else if (copilot.GetYButton()) {
-		gearHandler.Set(-0.1);
+	// Camera Control
+		//if (copilot.GetStartButton()) {
+			camera.SetState(false);
+		//} else if (copilot.GetBackButton()) {
+			//camera.SetState(true);
+		//}
+
+		// Update Shooter
+		shooter.Teleop();
+
+		// Gear Handler Control
+	if (copilot.GetBumper(GenericHID::kRightHand)) {
+		gearHandler.Set(0.25);
+	} else if (copilot.GetBumper(GenericHID::kLeftHand)) {
+		gearHandler.Set(-0.25);
 	} else {
 		gearHandler.Set(0);
 	}

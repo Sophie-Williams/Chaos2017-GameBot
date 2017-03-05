@@ -2,7 +2,7 @@
 #define SRC_CONFIG_H_
 
 /* Define Robot ID (0: Main Robot, 1: Practice Robot) */
-#define	ROBOT_ID	1
+#define	ROBOT_ID	0
 
 /* Constants for Competition Robot */
 #if ROBOT_ID == 0

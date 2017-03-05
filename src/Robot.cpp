@@ -26,11 +26,13 @@ Robot::Robot():
 	shooter(SHOOTER_LEFT_CANTALON_ID, SHOOTER_RIGHT_CANTALON_ID, 4),
 	roller(ROLLER_CANTALON_ID),
 	gearHandler(GEAR_CANTALON_ID),
+	camera(5),
 
 	// Assorted In's and Out's
 	gyro(),
 	pdu(0),
 	accelerometer(),
+
 
 	// NOTE: Documentation says (fl, rl, fr, rr), but it is actually (fr, fl, rr, rl)
 	robotDrive(PWMfr, PWMfl, PWMrr, PWMrl),
@@ -40,7 +42,8 @@ Robot::Robot():
 	rolling(false),
 	handling(false)
 {
-	robotDrive.SetExpiration(0.3);
+	CameraServer::GetInstance()->StartAutomaticCapture();
+	  robotDrive.SetExpiration(0.3);
 }
 
 // TODO: Check if WPILib is fixed yet.

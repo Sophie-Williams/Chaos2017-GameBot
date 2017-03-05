@@ -10,6 +10,7 @@
 #include "PowerDistributionPanel.h"
 #include "Shooter.h"
 #include "Roller.h"
+#include "Camera.h"
 
 // Main Robot Class
 class Robot: public IterativeRobot
@@ -37,6 +38,7 @@ class Robot: public IterativeRobot
 	Shooter shooter;
 	Roller roller;
 	GearHandler gearHandler;
+	Camera camera;
 
 	// Assorted In's and Out's
 	ADXRS450_Gyro gyro;
