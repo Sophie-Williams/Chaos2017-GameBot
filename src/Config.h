@@ -2,7 +2,7 @@
 #define SRC_CONFIG_H_
 
 /* Define Robot ID (0: Main Robot, 1: Practice Robot) */
-#define	ROBOT_ID	0
+#define	ROBOT_ID	1
 
 /* Constants for Competition Robot */
 #if ROBOT_ID == 0
@@ -19,6 +19,7 @@
 #define SHOOTER_RIGHT_CANTALON_ID   18
 #define ROLLER_CANTALON_ID          13
 #define GEAR_CANTALON_ID			4
+#define AGITATOR_CANTALON_ID		1
 
 #endif
 
@@ -37,6 +38,7 @@
 #define SHOOTER_RIGHT_CANTALON_ID   6
 #define ROLLER_CANTALON_ID          9
 #define GEAR_CANTALON_ID			1
+#define AGITATOR_CANTALON_ID		1
 
 #endif
 

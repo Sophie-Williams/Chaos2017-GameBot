@@ -1,8 +1,7 @@
-#ifndef SRC_SHOOTER_H_
-#define SRC_SHOOTER_H_
+#ifndef SRC_CAMERA_H_
+#define SRC_CAMERA_H_
 
 #include "WPILib.h"
-#include "CANTalon.h"
 #include "Servo.h"
 
 class Camera
@@ -22,4 +21,4 @@ class Camera
 	void Teleop();
 };
 
-#endif /* SRC_SHOOTER_H_ */
+#endif /* SRC_CAMERA_H_ */

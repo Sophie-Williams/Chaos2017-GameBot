@@ -74,24 +74,27 @@ void Robot::TeleopPeriodic() {
 
 
 	// Shooter Control
-	if (copilot.GetBButton()) {
+	if (copilot.GetAButton()) {
 		shooter.SetState(false);
-	} else if (copilot.GetAButton()) {
+	} else if (copilot.GetBButton()) {
 		shooter.SetState(true);
 	}
 
 	// Update Shooter
 	shooter.Teleop();
 
-	// Camera Control
-		//if (copilot.GetStartButton()) {
-			camera.SetState(false);
-		//} else if (copilot.GetBackButton()) {
-			//camera.SetState(true);
-		//}
+	//Update Agitator
+	agitator.Teleop();
 
-		// Update Shooter
-		shooter.Teleop();
+	// Camera Control
+		if (copilot.GetStartButton()) {
+			camera.SetState(false);
+		} else if (copilot.GetBackButton()) {
+			camera.SetState(true);
+		}
+
+		// Update Camera
+		camera.Teleop();
 
 		// Gear Handler Control
 	if (copilot.GetBumper(GenericHID::kRightHand)) {

@@ -11,6 +11,7 @@
 #include "Shooter.h"
 #include "Roller.h"
 #include "Camera.h"
+#include "Agitator.h"
 
 // Main Robot Class
 class Robot: public IterativeRobot
@@ -39,6 +40,7 @@ class Robot: public IterativeRobot
 	Roller roller;
 	GearHandler gearHandler;
 	Camera camera;
+	Agitator agitator;
 
 	// Assorted In's and Out's
 	ADXRS450_Gyro gyro;

@@ -13,7 +13,7 @@ looking(false)
 		cameraServo.SetAngle(20);
 
 	}else {
-			cameraServo.SetAngle(150);
+			cameraServo.SetAngle(90);
 		}
 }
 		void Camera::SetState(bool newState) {
