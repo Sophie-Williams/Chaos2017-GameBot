@@ -23,6 +23,9 @@ class Shooter
 	bool GetState();
 
 	void Teleop();
+	void Auto();
+	void Shoot();
+
 };
 
 #endif /* SRC_SHOOTER_H_ */

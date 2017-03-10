@@ -34,3 +34,14 @@ void Shooter::SetState(bool newState) {
 bool Shooter::GetState() {
 	return shooting;
 }
+void Shooter::Auto(){
+
+	// Set shooter speed
+		SetSpeed(0.42);
+
+}
+
+void Shooter::Shoot(){
+	//Shoot the balls
+	shooterServo.SetAngle(175);
+}
