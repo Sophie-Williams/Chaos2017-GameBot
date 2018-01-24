@@ -5,6 +5,7 @@
 #include "Config.h"
 
 Robot::Robot():
+
 	// Actual Motor Controllers
 	frontRight(FRONT_RIGHT_CANTALON_ID),
 	frontLeft(FRONT_LEFT_CANTALON_ID),
@@ -23,11 +24,18 @@ Robot::Robot():
 
 	// Subsystems
 	climber(CLIMBER_CANTALON_ID),
-	shooter(SHOOTER_LEFT_CANTALON_ID, SHOOTER_RIGHT_CANTALON_ID, 4),
-	roller(ROLLER_CANTALON_ID),
+	shooter(SHOOTER_LEFT_CANTALON_ID, SHOOTER_RIGHT_CANTALON_ID),
+	fuelLoader(LOADER_CANTALON_ID),
 	gearHandler(GEAR_CANTALON_ID),
-	camera(5),
-	agitator(AGITATOR_CANTALON_ID, 6),
+	camera(5, 6),
+
+	//Auto Switches
+	Auto0(0),
+	Auto1(1),
+	Auto2(2),
+	Auto3(3),
+	Auto4(4),
+
 
 	// Assorted In's and Out's
 	gyro(),
@@ -40,11 +48,21 @@ Robot::Robot():
 
 	// Flag variables
 	climbing(false),
-	rolling(false),
+	loading(false),
 	handling(false)
+
 {
 	CameraServer::GetInstance()->StartAutomaticCapture();
 	  robotDrive.SetExpiration(0.3);
+
+	  chooser.AddDefault(CenterGear, CenterGear);
+	  chooser.AddObject(RedHighGoal, RedHighGoal);
+	  chooser.AddObject(BlueHighGoal, BlueHighGoal);
+	  chooser.AddObject(BreakBaseline, BreakBaseline);
+	  chooser.AddObject(redRightGearblueLeftGear, redRightGearblueLeftGear);
+	  chooser.AddObject(redLeftGearblueRightGear, redLeftGearblueRightGear);
+	  frc::SmartDashboard::PutData("Auto Modes", &chooser);
+
 }
 
 // TODO: Check if WPILib is fixed yet.

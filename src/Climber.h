@@ -13,6 +13,8 @@ class Climber
 	Climber( int talon_id );
 
 	void Set( float speed );
+
+	void Hold( float Speed );
 };
 
 #endif /* SRC_CLIMBER_H_ */

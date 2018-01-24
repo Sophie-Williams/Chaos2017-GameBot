@@ -10,3 +10,7 @@ Climber::Climber( int talon_id ):
 void Climber::Set( float speed ) {
 	climberMotor.Set( speed );
 }
+
+void Climber::Hold( float Speed) {
+	climberMotor.Set( Speed );
+}

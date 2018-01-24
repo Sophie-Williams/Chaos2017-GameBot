@@ -8,17 +8,18 @@ class Camera
 {
   private:
 
-	Servo cameraServo;
+	Servo cameraPanServo;
 
-	bool looking;
+	Servo cameraTiltServo;
+
+
+
+
 
   public:
-	Camera( int servo_id);
-
-	void SetState(bool newState);
-	bool GetState();
-
+	Camera( int servo_id, int servo_id2);
 	void Teleop();
+	int Looking;
 };
 
 #endif /* SRC_CAMERA_H_ */

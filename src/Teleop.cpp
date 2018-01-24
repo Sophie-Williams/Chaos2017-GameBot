@@ -1,3 +1,4 @@
+#include <Fuel Loader.h>
 #include <Robot.h>
 #include <cstdint>
 #include "WPILib.h"
@@ -6,7 +7,6 @@
 #include <iostream>
 #include "Climber.h"
 #include "Shooter.h"
-#include "Roller.h"
 #include "Camera.h"
 
 double deadband(double input) {
@@ -23,22 +23,24 @@ double deadband(double input) {
 
 void Robot::TeleopInit() {
 	robotDrive.SetSafetyEnabled(false);	// Necessary for proper motor functioning during Teleop
+
+
 }
 
 void Robot::TeleopPeriodic() {
 
-	// Drive with deadband
+	// Drive with deadband (Coarse adjustment)
 	robotDrive.MecanumDrive_Cartesian(
-		-0.5 * deadband(driver.GetY(GenericHID::kLeftHand)), // Forward movement
-		 0.5 * deadband(driver.GetX(GenericHID::kLeftHand)), // Sideways movement
-		-0.5 * deadband(driver.GetX(GenericHID::kRightHand))  // Rotational movement
+			-1.5 * deadband(driver.GetY(GenericHID::kLeftHand)), // Forward movement
+			deadband(driver.GetX(GenericHID::kLeftHand)), // Sideways movement
+			-1.5 * deadband(driver.GetX(GenericHID::kRightHand)) // Rotational movement
 	);
 
 	// Climbing Control
 	if (climbing) {
 		if (driver.GetBButton()) {
 			climbing = false;
-		} else if (pdu.GetCurrent(3) >= 30.0) {
+		} else if (pdu.GetCurrent(3) >= 50) {
 			climber.Set(0.1);
 		} else {
 			climber.Set(1.0);
@@ -47,63 +49,51 @@ void Robot::TeleopPeriodic() {
 		if (driver.GetAButton()) {
 			climbing = true;
 		} else if (driver.GetBButton()) {
-			climber.Set(-1);
-		} else {
-			climber.Set(0);
+			climber.Set(.15);
+
 		}
+
 	}
 
 	// Roller Control
-	if (rolling) {
+	if (loading) {
 		if (copilot.GetYButton()) {
-			rolling = false;
+			loading = false;
 		} else if (pdu.GetCurrent(15) >= 20.0) {
-			roller.Set(0.1);
+			fuelLoader.Set(0.1);
 		} else {
-			roller.Set(1.0);
+			fuelLoader.Set(.5);
 		}
 	} else {
 		if (copilot.GetXButton()) {
-			rolling = true;
-		} else if (driver.GetYButton()) {
-			roller.Set(-1);
+			loading = true;
+		} else if (copilot.GetYButton()) {
+			fuelLoader.Set(-.5);
 		} else {
-			roller.Set(0);
+			fuelLoader.Set(0);
 		}
 	}
 
-
 	// Shooter Control
-	if (copilot.GetAButton()) {
-		shooter.SetState(false);
-	} else if (copilot.GetBButton()) {
-		shooter.SetState(true);
-	}
+	/*if (copilot.GetAButton()) {
+	 shooter.SetState(false);
+	 } else if (copilot.GetBButton()) {
+	 shooter.SetState(true);
+	 }*/
 
 	// Update Shooter
 	shooter.Teleop();
 
-	//Update Agitator
-	agitator.Teleop();
-
 	// Camera Control
-		if (copilot.GetStartButton()) {
-			camera.SetState(false);
-		} else if (copilot.GetBackButton()) {
-			camera.SetState(true);
-		}
-
-		// Update Camera
-		camera.Teleop();
-
-		// Gear Handler Control
-	if (copilot.GetBumper(GenericHID::kRightHand)) {
-		gearHandler.Set(0.25);
-	} else if (copilot.GetBumper(GenericHID::kLeftHand)) {
-		gearHandler.Set(-0.25);
-	} else {
-		gearHandler.Set(0);
+	if (driver.GetBackButton()) {
+		camera.Looking = 1;
+	} else if (driver.GetStartButton()) {
+		camera.Looking = 2;
+	} else if(driver.GetXButton()){
+		camera.Looking = 3;
 	}
+	// Update Camera
+	camera.Teleop();
 
 	UpdateMotors();
 
