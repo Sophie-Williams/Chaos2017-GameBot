@@ -2,13 +2,13 @@
 #define SRC_AGITATOR_H_
 
 #include "WPILib.h"
-#include "CANTalon.h"
+#include "ctre/Phoenix.h"
 #include "Servo.h"
 
 class Agitator
 {
   private:
-	CANTalon agitator;
+	WPI_TalonSRX agitator;
 
 
 	Servo agitatorServo;

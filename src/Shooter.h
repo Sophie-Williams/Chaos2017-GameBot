@@ -2,14 +2,14 @@
 #define SRC_SHOOTER_H_
 
 #include "WPILib.h"
-#include "CANTalon.h"
+#include "ctre/Phoenix.h"
 #include "Servo.h"
 
 class Shooter
 {
   private:
-	CANTalon shooterLeft;
-	CANTalon shooterRight;
+	WPI_TalonSRX shooterLeft;
+	WPI_TalonSRX shooterRight;
 
 	Servo shooterServo;
 

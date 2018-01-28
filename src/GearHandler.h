@@ -2,12 +2,12 @@
 #define SRC_GEARHANDLER_H_
 
 #include "WPILib.h"
-#include "CANTalon.h"
+#include "ctre/Phoenix.h"
 
 class GearHandler
 {
   private:
-	CANTalon gearHandlerMotor;
+	WPI_TalonSRX gearHandlerMotor;
 
   public:
 	GearHandler( int talon_id );

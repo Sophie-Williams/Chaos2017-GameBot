@@ -5,7 +5,7 @@
 #include <cstdint>
 #include "WPILib.h"
 #include "ADXRS450_Gyro.h"
-#include "CANTalon.h"
+#include "ctre/Phoenix.h"
 #include "Climber.h"
 #include "PowerDistributionPanel.h"
 #include "Shooter.h"
@@ -18,17 +18,17 @@ class Robot: public IterativeRobot
 {
   private:
 	// Actual Motor Controllers
-	CANTalon frontRight;
-	CANTalon frontLeft;
-	CANTalon rearLeft;
-	CANTalon rearRight;
+	WPI_TalonSRX frontRight;
+	WPI_TalonSRX frontLeft;
+	WPI_TalonSRX rearLeft;
+	WPI_TalonSRX rearRight;
 
 	// Fake Motor Controllers
 	// TODO: Check if WPILib is fixed yet.
-	TalonSRX PWMfr;
-	TalonSRX PWMfl;
-	TalonSRX PWMrl;
-	TalonSRX PWMrr;
+	PWMTalonSRX PWMfr;
+	PWMTalonSRX PWMfl;
+	PWMTalonSRX PWMrl;
+	PWMTalonSRX PWMrr;
 
 	// Controllers
 	XboxController driver;

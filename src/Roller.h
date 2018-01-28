@@ -2,12 +2,12 @@
 #define SRC_ROLLER_H_
 
 #include "WPILib.h"
-#include "CANTalon.h"
+#include "ctre/Phoenix.h"
 
 class Roller
 {
   private:
-	CANTalon roller;
+	WPI_TalonSRX roller;
 
   public:
 	Roller( int talon_id );

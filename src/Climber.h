@@ -1,13 +1,13 @@
 #ifndef SRC_CLIMBER_H_
 #define SRC_CLIMBER_H_
 
-#include "CANTalon.h"
+#include "ctre/Phoenix.h"
 #include "WPILib.h"
 
 class Climber
 {
   private:
-	CANTalon climberMotor;
+	WPI_TalonSRX climberMotor;
 
   public:
 	Climber( int talon_id );
