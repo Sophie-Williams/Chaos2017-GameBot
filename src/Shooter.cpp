@@ -12,7 +12,7 @@ Shooter::Shooter( int talon_id, int talon_id2, int servo_id ):
 
 void Shooter::Teleop() {
 	// Set shooter speed
-	SetSpeed(0.42);
+	//SetSpeed(0.42);
 
 	// Set servo according to state
 	if (shooting) {
