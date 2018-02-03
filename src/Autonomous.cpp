@@ -2,10 +2,29 @@
 #include <cstdint>
 #include <cmath>
 #include "WPILib.h"
-
+	//forward at 0.4 for 1second =44"
 void Robot::AutonomousInit() {
 	// Setup
 	robotDrive.SetSafetyEnabled(false);
+	Forward(0.4,1.8);
+	Turn(0.2,90);
+	Forward(0.4,1.15);
+	Turn(0.2,-90);
+	Forward(0.4,1.25);
+	Turn(0.2,-90);
+	Forward(0.4,1.6);
+	Turn(0.2,90);
+	Forward(0.4,2.5);
+	//Start of reverse
+	Forward(-0.4,2.25);
+	Turn(0.2,-90);
+	Forward(-0.4,1.6);
+	Turn(0.2,90);
+	Forward(-0.4,1.1);
+	Turn(0.2,90);
+	Forward(-0.4,1.15);
+	Turn(0.2,-90);
+	Forward(-0.4,1.8);
 }
 
 void Robot::AutonomousPeriodic() {
