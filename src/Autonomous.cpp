@@ -6,25 +6,8 @@
 void Robot::AutonomousInit() {
 	// Setup
 	robotDrive.SetSafetyEnabled(false);
-	Forward(0.4,1.8);
-	Turn(0.2,90);
-	Forward(0.4,1.15);
-	Turn(0.2,-90);
-	Forward(0.4,1.25);
-	Turn(0.2,-90);
-	Forward(0.4,1.6);
-	Turn(0.2,90);
-	Forward(0.4,2.5);
-	//Start of reverse
-	Forward(-0.4,2.25);
-	Turn(0.2,-90);
-	Forward(-0.4,1.6);
-	Turn(0.2,90);
-	Forward(-0.4,1.1);
-	Turn(0.2,90);
-	Forward(-0.4,1.15);
-	Turn(0.2,-90);
-	Forward(-0.4,1.8);
+	Forward(0.4,2);
+	Strafe(0.3,2);
 }
 
 void Robot::AutonomousPeriodic() {
@@ -111,4 +94,21 @@ void Robot::Forward( float Speed, float Time ) {
 	robotDrive.MecanumDrive_Cartesian(0, 0, 0);
 	UpdateMotors();
 	timer.Stop();
+}
+
+void Robot::Strafe( float Speed, float Time ) {
+	// Reset the gyro to 0 degrees
+	gyro.Reset();
+
+	// Initialize Timer
+	Timer timer;
+	timer.Reset();
+	timer.Start();
+
+	// Move straight, changing angle to adjust for drift
+	while ( timer.Get() <= Time ) {
+		Wait(0.005);
+		robotDrive.MecanumDrive_Cartesian(0, Speed, gyro.GetAngle() * 0.1 );
+		UpdateMotors();
+	}
 }

@@ -70,6 +70,7 @@ class Robot: public IterativeRobot
 	void Forward( float Speed, float Time );
 	void Backward( float Speed, float Time );
 	void Turn( float absSpeed, float targetAngle );
+	void Strafe( float Speed, float Time );
 	int AutoSwitch();
 };
 
